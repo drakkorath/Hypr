@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(CMAKE_CXX_COMPILER "/bin/g++")
+set(CMAKE_CXX_COMPILER "/usr/bin/g++")
 
 project(Hypr 
     VERSION 0.1
