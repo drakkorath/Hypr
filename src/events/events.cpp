@@ -278,7 +278,7 @@ CWindow* Events::remapFloatingWindow(int windowID, int forcemonitor) {
     //
     const auto wm_type_cookie = xcb_get_property(g_pWindowManager->DisplayConnection, false, windowID, HYPRATOMS["_NET_WM_WINDOW_TYPE"], XCB_GET_PROPERTY_TYPE_ANY, 0, (4294967295U));
     const auto wm_type_cookiereply = xcb_get_property_reply(g_pWindowManager->DisplayConnection, wm_type_cookie, NULL);
-    xcb_atom_t TYPEATOM = NULL;
+    xcb_atom_t TYPEATOM = XCB_ATOM_NONE; // or 0
     if (wm_type_cookiereply == NULL || xcb_get_property_value_length(wm_type_cookiereply) < 1) {
         Debug::log(LOG, "No preferred type found. (RemapFloatingWindow)");
     } else {
@@ -918,7 +918,7 @@ void Events::eventClientMessage(xcb_generic_event_t* event) {
 
 
             // Notify the thing we did it
-            uint8_t buf[32] = {NULL};
+            uint8_t buf[32] = {0};
             xcb_client_message_event_t* event = (xcb_client_message_event_t*)buf;
             event->response_type = XCB_CLIENT_MESSAGE;
             event->window = CLIENT;
