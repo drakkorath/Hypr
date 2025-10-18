@@ -246,7 +246,7 @@ void CStatusBar::setupTray() {
 
     Debug::log(LOG, "Tray setup done, sending message!");
 
-    uint8_t buf[32] = {NULL};
+    uint8_t buf[32] = {0};
     xcb_client_message_event_t* event = (xcb_client_message_event_t*)buf;
 
     event->response_type = XCB_CLIENT_MESSAGE;
